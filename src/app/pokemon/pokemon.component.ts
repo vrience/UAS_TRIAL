@@ -9,25 +9,25 @@ import { BehaviorSubject } from "rxjs";
 })
 export class PokemonComponent implements OnInit {
     pokemons = [];
-    pokemons$: BehaviorSubject<Array<any>>;
     idxstart = 0;
 
     constructor(private ps: PokemonService) {
-        this.pokemons$ = new BehaviorSubject([]);
+        // this.pokemons$ = new BehaviorSubject([]);
      }
 
     ngOnInit(): void {
         this.ps.getPokemons().subscribe((response: any) => {
-           this.pokemons.push( ... response.results);
-           this.pokemons$.next(this.pokemons);
+          this.pokemons = response.results
+        //   response.results ambil data array object results
+          console.log(this.pokemons)
         });
     }
 
     loadMore(){
-        this.idxstart+=20;
-        this.ps.getPokemons(this.idxstart).subscribe((response: any) => {
-            this.pokemons.push( ... response.results);
-            this.pokemons$.next(this.pokemons);
-         });
+        // this.idxstart+=20;
+        // this.ps.getPokemons(this.idxstart).subscribe((response: any) => {
+        //     this.pokemons.push( ... response.results);
+        //     this.pokemons$.next(this.pokemons);
+        //  });
     }
 }

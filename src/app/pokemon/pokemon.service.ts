@@ -5,21 +5,16 @@ import { HttpClient } from "@angular/common/http"
     providedIn: "root"
 })
 export class PokemonService {
-    baseUrl = `https://pokeapi.co/api/v2`;
+    baseUrl = `https://rickandmortyapi.com/api`;
 
     constructor(private http: HttpClient){
 
     }
-
-    getPokemons(idxstart=0){
-        if(idxstart){
-        return this.http.get(`${this.baseUrl}/pokemon?offset=${idxstart}`);
-        } else {
-            return this.http.get(`${this.baseUrl}/pokemon`);
-        }
+    getPokemons(){
+            return this.http.get(`${this.baseUrl}/character`);
     }
 
     getPokemon(name: string){
-        return this.http.get(`${this.baseUrl}/pokemon/${name}`);
+        return this.http.get(`${this.baseUrl}/character/${name}`);
     }
 }
