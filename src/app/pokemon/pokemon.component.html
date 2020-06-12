@@ -2,10 +2,10 @@
 </ActionBar>
 
 <GridLayout>
-    <ListView [items]="characters$ | async" (loadMoreItems)="loadMore()">
+    <ListView [items]="pokemons$ | async" (loadMoreItems)="loadMore()">
         <ng-template let-pokemon="item">
             <StackLayout>
-                <Label [nsRouterLink]="['/character', character.name]" [text]="character.name"></Label>
+                <Label [nsRouterLink]="['/pokemon', pokemon.name]" [text]="pokemon.name"></Label>
             </StackLayout>
         </ng-template>
     </ListView>
